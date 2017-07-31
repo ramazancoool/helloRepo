@@ -1,3 +1,4 @@
+package com.init;
 
 public class Hello {
 
