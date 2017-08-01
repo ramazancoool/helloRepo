@@ -14,14 +14,13 @@ import org.ektorp.support.DesignDocument;
  * Hello world!
  *
  */
-public class App {
+public class App3 {
 	public static void main(String[] args) throws MalformedURLException {
 		
 		HttpClient httpClient = new StdHttpClient.Builder().url("http://localhost:5984").build();
 		CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
 		// --------------- Creating database----------------------------//
-		CouchDbConnector db = new StdCouchDbConnector("cust", dbInstance);
-		
+		CouchDbConnector db = new StdCouchDbConnector("javatpoint", dbInstance);
 		db.createDatabaseIfNotExists();
 		// --------------- Creating Document----------------------------//
 		DesignDocument dd = new DesignDocument("light");
