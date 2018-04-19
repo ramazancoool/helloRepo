@@ -17,39 +17,40 @@ public class InsertDbExample {
 
 	public static void main(String[] args) throws MalformedURLException {
 		HttpClient httpClient = new StdHttpClient.Builder()
-                .url("http://localhost:5984")
-                .username("admin")
-                .password("12345")
-                .build();
-		
+				.url(ICouchDbConstants.HOST_ADDRESS_OF_DB)
+				.username(ICouchDbConstants.USERNAME_OF_DB)
+				.password(ICouchDbConstants.PASSWORD_OF_DB)
+				.build();
+
 		CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
-		// if the second parameter is true, the database will be created if it doesn't exists
-		CouchDbConnector dbConnector = dbInstance.createConnector(ICouchDbConstants.DATABASE_NAME_MY_FIRST_DB, true);
-		
-		//Delete already exist
+		// if the second parameter is true, the database will be created if it
+		// doesn't exists
+		CouchDbConnector dbConnector = dbInstance.createConnector(
+				ICouchDbConstants.DATABASE_NAME_MY_FIRST_DB, true);
+
+		// Delete already exist
 		Map resultMap = dbConnector.find(Map.class, ICouchDbConstants.ID_1);
-		
-		if(resultMap != null){
+
+		if (resultMap != null) {
 			dbConnector.delete(resultMap);
 		}
-		//delete end
-		
-		//fill the map
+		// delete end
+
+		// fill the map
 		Map<String, Object> map = new HashMap<String, Object>();
-		
+
 		map.put("_id", ICouchDbConstants.ID_1);
 		map.put("name", "ektorp");
 		map.put("version", 2.41);
-	    
-		//Insert command
+
+		// Insert command
 		dbConnector.create(map);
 
-		
-		Map<String, Object> map2 = dbConnector.find(Map.class, ICouchDbConstants.ID_1);
-		
+		Map<String, Object> map2 = dbConnector.find(Map.class,
+				ICouchDbConstants.ID_1);
+
 		DisplayHelper.showDocument(map2);
-		
+
 	}
-	
 
 }

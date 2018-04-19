@@ -16,18 +16,21 @@ public class FindDbExample {
 
 	public static void main(String[] args) throws MalformedURLException {
 		HttpClient httpClient = new StdHttpClient.Builder()
-                .url("http://localhost:5984")
-                .username("admin")
-                .password("12345")
-                .build();
-		
-		CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
-		// if the second parameter is true, the database will be created if it doesn't exists
-		CouchDbConnector dbConnector = dbInstance.createConnector(ICouchDbConstants.DATABASE_NAME_MY_FIRST_DB, true);
-		
-	    Map<String, Object> map = dbConnector.find(Map.class, ICouchDbConstants.ID_REFERENCE_DATA);
+				.url(ICouchDbConstants.HOST_ADDRESS_OF_DB)
+				.username(ICouchDbConstants.USERNAME_OF_DB)
+				.password(ICouchDbConstants.PASSWORD_OF_DB)
+				.build();
 
-	    DisplayHelper.showDocument(map);
+		CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
+		// if the second parameter is true, the database will be created if it
+		// doesn't exists
+		CouchDbConnector dbConnector = dbInstance.createConnector(
+				ICouchDbConstants.DATABASE_NAME_MY_FIRST_DB, true);
+
+		Map<String, Object> map = dbConnector.find(Map.class,
+				ICouchDbConstants.ID_REFERENCE_DATA);
+
+		DisplayHelper.showDocument(map);
 	}
 
 }

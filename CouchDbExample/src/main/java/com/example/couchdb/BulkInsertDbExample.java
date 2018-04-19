@@ -19,9 +19,9 @@ public class BulkInsertDbExample {
 
 	public static void main(String[] args) throws MalformedURLException {
 		HttpClient httpClient = new StdHttpClient.Builder()
-                .url("http://localhost:5984")
-                .username("admin")
-                .password("12345")
+                .url(ICouchDbConstants.HOST_ADDRESS_OF_DB)
+                .username(ICouchDbConstants.USERNAME_OF_DB)
+                .password(ICouchDbConstants.PASSWORD_OF_DB)
                 .build();
 		
 		CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);

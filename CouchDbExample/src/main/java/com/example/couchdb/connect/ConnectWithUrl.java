@@ -10,6 +10,8 @@ import org.ektorp.impl.StdCouchDbConnector;
 import org.ektorp.impl.StdCouchDbInstance;
 import org.ektorp.support.DesignDocument;
 
+import com.example.couchdb.constant.ICouchDbConstants;
+
 /**
  * Hello world!
  *
@@ -17,7 +19,7 @@ import org.ektorp.support.DesignDocument;
 public class ConnectWithUrl {
 	public static void main(String[] args) throws MalformedURLException {
 		
-		HttpClient httpClient = new StdHttpClient.Builder().url("http://localhost:5984").build();
+		HttpClient httpClient = new StdHttpClient.Builder().url(ICouchDbConstants.HOST_ADDRESS_OF_DB).build();
 		CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
 		// --------------- Creating database----------------------------//
 		CouchDbConnector db = new StdCouchDbConnector("cust", dbInstance);
