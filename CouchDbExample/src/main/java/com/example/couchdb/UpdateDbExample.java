@@ -10,7 +10,10 @@ import org.ektorp.http.HttpClient;
 import org.ektorp.http.StdHttpClient;
 import org.ektorp.impl.StdCouchDbInstance;
 
-public class HelloEktorp4 {
+import com.example.couchdb.constant.ICouchDbConstants;
+import com.example.couchdb.utility.DisplayHelper;
+
+public class UpdateDbExample {
 
 	public static void main(String[] args) throws MalformedURLException {
 		HttpClient httpClient = new StdHttpClient.Builder()
@@ -21,23 +24,37 @@ public class HelloEktorp4 {
 		
 		CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
 		// if the second parameter is true, the database will be created if it doesn't exists
-		CouchDbConnector db = dbInstance.createConnector("my_first_database", true);
+		CouchDbConnector dbConnector = dbInstance.createConnector(ICouchDbConstants.DATABASE_NAME_MY_FIRST_DB, true);
+		
+		
+		Map resultMap = dbConnector.find(Map.class, ICouchDbConstants.ID_2);
+		
+		if(resultMap != null){
+			dbConnector.delete(resultMap);
+		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		map.put("_id", "1");
-		map.put("name", "MIHU");
+		map.put("_id", "2");
+		map.put("name", "Ektorp");
 		map.put("version", 2.41);
 	    
-		db.create(map);
+		dbConnector.create(map);
+		
+		DisplayHelper.showDocument(map);
+		
+		Map<String, Object> map2 = dbConnector.find(Map.class, ICouchDbConstants.ID_2);
+		
+		
+		map2.put("name", "Ektorp Updated");
+		System.out.println("name = Ektorp Updated");
 
+		dbConnector.update(map2);
 		
-		Map<String, Object> map2 = db.find(Map.class, "1");
+		map2 = dbConnector.find(Map.class, "2");
 		
-		System.out.println("db name: " + map2.get("name"));
+		DisplayHelper.showDocument(map2);
 		
-		
-		System.out.println("finish");
 	}
 
 }

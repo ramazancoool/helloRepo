@@ -13,7 +13,10 @@ import org.ektorp.http.HttpClient;
 import org.ektorp.http.StdHttpClient;
 import org.ektorp.impl.StdCouchDbInstance;
 
-public class HelloEktorp2 {
+import com.example.couchdb.constant.ICouchDbConstants;
+import com.example.couchdb.utility.DisplayHelper;
+
+public class InsertDbExample2 {
 
 	public static void main(String[] args) throws MalformedURLException {
 		HttpClient httpClient = new StdHttpClient.Builder()
@@ -24,7 +27,13 @@ public class HelloEktorp2 {
 		
 		CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
 		// if the second parameter is true, the database will be created if it doesn't exists
-		CouchDbConnector db = dbInstance.createConnector("my_first_database", true);
+		CouchDbConnector dbConnector = dbInstance.createConnector(ICouchDbConstants.DATABASE_NAME_MY_FIRST_DB, true);
+
+		Map resultMap = dbConnector.find(Map.class, ICouchDbConstants.ID_REFERENCE_DATA2);
+		
+		if(resultMap != null){
+			dbConnector.delete(resultMap);
+		}
 		
 		Map<String, List<String>> majorCitiesByCountry = new HashMap<String, List<String>>();
 		
@@ -33,15 +42,17 @@ public class HelloEktorp2 {
 		
 		List<String> countries = new ArrayList<String>();
 	    Map<String, Object> referenceData = new HashMap<String, Object>();
-	    referenceData.put("_id", "referenceData2");
+	    referenceData.put("_id", ICouchDbConstants.ID_REFERENCE_DATA2);
 	    referenceData.put("countries", countries);
 	    referenceData.put("majorCitiesByCountry", majorCitiesByCountry);
 	    
-	    db.create(referenceData);
+	    dbConnector.create(referenceData);
 
-	    Map<String, Object> referenceData_2 = db.get(Map.class, "referenceData");
+	    Map<String, Object> map = dbConnector.get(Map.class, ICouchDbConstants.ID_REFERENCE_DATA2);
+	    
+	    DisplayHelper.showDocument(map);
+	    
 		
-		System.out.println("finish");
 	}
 
 }

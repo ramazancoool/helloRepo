@@ -1,4 +1,4 @@
-package com.example.couchdb;
+package com.example.couchdb.connect;
 
 import java.net.MalformedURLException;
 
@@ -8,7 +8,7 @@ import org.ektorp.http.HttpClient;
 import org.ektorp.http.StdHttpClient;
 import org.ektorp.impl.StdCouchDbInstance;
 
-public class HelloEktorp {
+public class ConnectWithUserName {
 
 	public static void main(String[] args) throws MalformedURLException {
 		HttpClient httpClient = new StdHttpClient.Builder()
