@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import org.lightcouch.Changes;
@@ -9,8 +8,8 @@ import org.lightcouch.ReplicationResult;
 import org.lightcouch.Response;
 
 public class LightCouch {
-	
-	public void x() throws IOException{
+
+	public static void main(String[] args) throws IOException {
 		CouchDbClient dbClient = new CouchDbClient(); 
 
 		Foo foo = new Foo(); // Plain Java Object
@@ -18,7 +17,7 @@ public class LightCouch {
 		Response dbClientResponse = dbClient.save(foo);
 
 		foo = dbClient.find(Foo.class, "doc-id");
-
+		
 		dbClient.update(foo);
 
 		dbClient.remove(foo);
