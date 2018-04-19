@@ -26,5 +26,5 @@ public class App {
 		// --------------- Creating Document----------------------------//
 		DesignDocument dd = new DesignDocument("light");
 		db.create(dd);
-	}
+	} 
 }
