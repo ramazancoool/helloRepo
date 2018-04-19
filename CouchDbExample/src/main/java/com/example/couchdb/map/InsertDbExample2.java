@@ -1,4 +1,4 @@
-package com.example.couchdb;
+package com.example.couchdb.map;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
