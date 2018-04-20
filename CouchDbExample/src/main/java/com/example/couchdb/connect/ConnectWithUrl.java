@@ -22,7 +22,7 @@ public class ConnectWithUrl {
 		HttpClient httpClient = new StdHttpClient.Builder().url(ICouchDbConstants.HOST_ADDRESS_OF_DB).build();
 		CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
 		// --------------- Creating database----------------------------//
-		CouchDbConnector db = new StdCouchDbConnector("cust", dbInstance);
+		CouchDbConnector db = new StdCouchDbConnector(ICouchDbConstants.DATABASE_NAME_CUST, dbInstance);
 		db.createDatabaseIfNotExists();
 		// --------------- Creating Document----------------------------//
 		DesignDocument dd = new DesignDocument("light");
