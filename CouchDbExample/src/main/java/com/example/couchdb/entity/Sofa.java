@@ -16,8 +16,8 @@ public class Sofa {
 	    
 	    private Double amount;
 
-	    public void setId(String s) {
-	        id = s;
+	    public void setId(String id) {
+	        this.id = id;
 	    }
 
 	    public String getId() {
