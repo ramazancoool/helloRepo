@@ -36,7 +36,7 @@ public class UpdateDbExample {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		map.put("_id", "2");
+		map.put("_id", ICouchDbConstants.ID_2);
 		map.put("name", "Ektorp");
 		map.put("version", 2.41);
 
@@ -52,7 +52,7 @@ public class UpdateDbExample {
 
 		dbConnector.update(map2);
 
-		map2 = dbConnector.find(Map.class, "2");
+		map2 = dbConnector.find(Map.class, ICouchDbConstants.ID_2);
 
 		DisplayHelper.showDocument(map2);
 
