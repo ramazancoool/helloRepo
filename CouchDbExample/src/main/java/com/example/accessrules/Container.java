@@ -12,10 +12,10 @@ public class Container {
 		private void privateRootMethod(){
 			System.out.println("privateRootMethod");
 		}
-		private void protectedRootMethod(){
+		protected void protectedRootMethod(){
 			System.out.println("protectedRootMethod");
 		}
-		private void publicRootMethod(){
+		public void publicRootMethod(){
 			System.out.println("publicRootMethod");
 		}
 		
