@@ -3,7 +3,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean id="helloBean2" class="com.example.springexample.xml.hello.HelloBean"/>
-	
+	<bean id="helloBean2" class="com.example.springexample.xml.hello.HelloBean" />
 
+	<bean id="fooService" class="com.example.springexample.xmlautowired.FooService"/>
+		<property name="currencyServiceBean" ref="currencyServiceBean" />
+	</bean>
+	<bean id="currencyServiceBean" class="com.example.springexample.xmlautowired.CurrencyService" />
 </beans>
