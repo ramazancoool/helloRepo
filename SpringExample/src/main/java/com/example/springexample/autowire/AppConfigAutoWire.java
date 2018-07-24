@@ -3,8 +3,6 @@ package com.example.springexample.autowire;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.example.springexample.xmlautowired.FooService;
-
 @Configuration
 public class AppConfigAutoWire {
 

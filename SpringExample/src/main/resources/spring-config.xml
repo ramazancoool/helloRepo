@@ -5,7 +5,7 @@
 
 	<bean id="helloBean2" class="com.example.springexample.xml.hello.HelloBean" />
 
-	<bean id="fooService" class="com.example.springexample.xmlautowired.FooService"/>
+	<bean id="fooService" class="com.example.springexample.xmlautowired.FooService">
 		<property name="currencyServiceBean" ref="currencyServiceBean" />
 	</bean>
 	<bean id="currencyServiceBean" class="com.example.springexample.xmlautowired.CurrencyService" />

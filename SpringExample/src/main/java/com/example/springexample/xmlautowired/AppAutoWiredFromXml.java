@@ -11,6 +11,5 @@ public class AppAutoWiredFromXml {
 		FooService bean = (FooService) context.getBean("fooService");
 		
 		bean.method();
-		
 	}
 }
